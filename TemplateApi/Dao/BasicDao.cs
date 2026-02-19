@@ -1,10 +1,10 @@
 namespace TemplateApi.Dao;
 
-using TemplateApi.Paging;
 using MongoDB.Driver;
-using TemplateApi.Parameters;
 using TemplateApi.Dao.Interfaces;
 using TemplateApi.Models;
+using TemplateApi.Paging;
+using TemplateApi.Parameters;
 
 public class BasicDao : IBasicDao
 {

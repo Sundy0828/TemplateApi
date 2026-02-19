@@ -1,10 +1,7 @@
-using System.Net;
 using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 using MongoDB.Driver;
-using Microsoft.AspNetCore.Mvc;
-using TemplateApi.Attributes;
-using TemplateApi.Services;
 using TemplateApi.Dao;
 using TemplateApi.Dao.Interfaces;
 using TemplateApi.Domains;
@@ -30,12 +27,12 @@ try
     builder.Services.AddSwaggerGen(options =>
     {
         options.AddSecurityDefinition("ApiKey", new OpenApiSecurityScheme
-    {
-        Type = SecuritySchemeType.ApiKey,
-        In = ParameterLocation.Header,
-        Name = "X-Api-Key",
-        Description = "API Key Authentication"
-    });
+        {
+            Type = SecuritySchemeType.ApiKey,
+            In = ParameterLocation.Header,
+            Name = "X-Api-Key",
+            Description = "API Key Authentication"
+        });
 
         options.AddSecurityRequirement(new OpenApiSecurityRequirement
         {

@@ -1,8 +1,8 @@
 namespace TemplateApi.Mapping;
 
 using TemplateApi.Dto;
-using TemplateApi.Parameters;
 using TemplateApi.Models;
+using TemplateApi.Parameters;
 
 public static class BasicMapper
 {

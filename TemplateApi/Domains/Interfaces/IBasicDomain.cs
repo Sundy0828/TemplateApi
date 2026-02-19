@@ -1,8 +1,8 @@
 namespace TemplateApi.Domains.Interfaces;
 
+using TemplateApi.Models;
 using TemplateApi.Paging;
 using TemplateApi.Parameters;
-using TemplateApi.Models;
 
 public interface IBasicDomain
 {

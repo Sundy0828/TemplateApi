@@ -1,15 +1,13 @@
 namespace TemplateApi.Services;
 
-using TemplateApi.Paging;
-using TemplateApi.Utility;
 using Microsoft.AspNetCore.Mvc;
 using TemplateApi.Attributes;
-using TemplateApi.Dto;
-using TemplateApi.Parameters;
-using TemplateApi.Services;
+using TemplateApi.Domains.Interfaces;
 using TemplateApi.Mapping;
 using TemplateApi.Models;
-using TemplateApi.Domains.Interfaces;
+using TemplateApi.Paging;
+using TemplateApi.Parameters;
+using TemplateApi.Utility;
 
 [ApiController]
 [Route("[controller]")]
@@ -64,7 +62,7 @@ public class BasicService(IBasicDomain domain) : ControllerBase
         var model = new BasicModel() { Id = id };
         BasicMapper.Apply(parameters, model);
         await _domain.UpdateAsync(id, model);
-        
+
         return NoContent();
     }
 

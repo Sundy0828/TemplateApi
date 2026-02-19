@@ -1,10 +1,10 @@
 namespace TemplateApi.Domains;
 
-using TemplateApi.Paging;
-using TemplateApi.Parameters;
 using TemplateApi.Dao.Interfaces;
 using TemplateApi.Domains.Interfaces;
 using TemplateApi.Models;
+using TemplateApi.Paging;
+using TemplateApi.Parameters;
 
 public class BasicDomain(ILogger<BasicDomain> logger, IBasicDao dao) : IBasicDomain
 {
