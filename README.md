@@ -8,6 +8,7 @@ A lightweight REST API starter built with an N-Tier architecture. Includes Mongo
 
 ## Table of Contents
 
+-   [Prerequisites](#prerequisites)
 -   [Setup](#setup)
 -   [API Configuration](#api-configuration)
 -   [Run the API](#run-the-api)
@@ -15,9 +16,23 @@ A lightweight REST API starter built with an N-Tier architecture. Includes Mongo
 
 ---
 
-## Setup
+## Prerequisites
 
-Make sure you have [.NET 10 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) installed.
+Make sure you have these installed:
+- [.NET 10 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+
+Verify installation:
+
+```
+dotnet --version
+docker --version
+docker compose version
+```
+
+---
+
+## Setup
 
 Clone the repo and navigate to the solution:
 
@@ -34,32 +49,12 @@ dotnet restore
 
 ---
 
-## API Configuration
-
-Inside the `TemplateApi` folder, include these configuration files:
-
-### `appsettings.json`
-
-```
-{
-  "MongoDb": {
-    "ConnectionString": "mongodb+srv://xxx:xxx@xxx.mongodb.net/",
-    "DatabaseName": "TemplateApiDb"
-  }
-}
-```
-
-> Replace sensitive information (`xxx`) with your credentials.
-
----
-
 ## Run the API
 
-Navigate to the API project:
+From the repository root where docker-compose.yml lives:
 
 ```
-cd TemplateApi
-dotnet run
+docker compose up --build
 ```
 
 By default, the API will run at:

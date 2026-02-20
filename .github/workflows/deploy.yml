@@ -1,0 +1,40 @@
+name: Deploy to Cloud Run
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+env:
+  SERVICE: template-api
+  REGION: us-central1
+  REPOSITORY: api-repo
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: '${{ secrets.GCP_SA_KEY }}'
+
+      - uses: google-github-actions/setup-gcloud@v2
+
+      - run: gcloud auth configure-docker $REGION-docker.pkg.dev
+
+      - run: |
+          IMAGE=$REGION-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/$REPOSITORY/template-api:latest
+          docker build -t $IMAGE .
+          docker push $IMAGE
+
+      - run: |
+          gcloud run deploy $SERVICE \
+            --image $REGION-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/$REPOSITORY/template-api:latest \
+            --region $REGION \
+            --platform managed \
+            --allow-unauthenticated \
+            --set-env-vars "MongoDb__ConnectionString=${{ secrets.MONGO_CONN }},MongoDb__DatabaseName=TemplateApiDb"

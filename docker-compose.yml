@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  api:
+    build: .
+    ports:
+      - "5070:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      MongoDb__ConnectionString: mongodb://mongo:27017
+      MongoDb__DatabaseName: TemplateApiDb
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:7
+    container_name: template_mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
