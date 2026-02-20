@@ -8,8 +8,8 @@ on:
 
 env:
   SERVICE: template-api
-  REGION: us-central1
-  REPOSITORY: api-repo
+  REGION: us-east1
+  REPOSITORY: TemplateApi
 
 jobs:
   deploy:
