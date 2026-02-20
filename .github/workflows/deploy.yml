@@ -27,13 +27,13 @@ jobs:
       - run: gcloud auth configure-docker $REGION-docker.pkg.dev
 
       - run: |
-          IMAGE=$REGION-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/$REPOSITORY/template-api:latest
+          IMAGE=$REGION-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/$REPOSITORY/TemplateApi:latest
           docker build -t $IMAGE .
           docker push $IMAGE
 
       - run: |
           gcloud run deploy $SERVICE \
-            --image $REGION-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/$REPOSITORY/template-api:latest \
+            --image $REGION-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/$REPOSITORY/TemplateApi:latest \
             --region $REGION \
             --platform managed \
             --allow-unauthenticated \
